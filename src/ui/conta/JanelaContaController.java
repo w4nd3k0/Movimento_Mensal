@@ -20,6 +20,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.hibernate.boot.model.relational.InitCommand;
 import servicos.ContaServico;
 import util.AlertaUtil;
 

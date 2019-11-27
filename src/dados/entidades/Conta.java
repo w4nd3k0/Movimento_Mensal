@@ -38,7 +38,7 @@ public class Conta {
         this.Nome_Conta = Nome_Conta;
         this.Banco_Conta = Banco_Conta;
         this.Agencia_Conta = Agencia_Conta;
-        this.Numero_Conta = Numero_Conta;
+        this.Numero_Conta = Numero_Conta; 
     }
     
     /*Equals e hashCode*/
@@ -116,6 +116,10 @@ public class Conta {
     
     public String toString(){
         return this.getNome_Conta();
+    }
+
+    private void setExtendedState(int MAXIMIZED_BOTH) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

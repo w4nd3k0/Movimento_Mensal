@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,13 +16,14 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        
         Parent root = FXMLLoader.load(getClass().getResource("Principal.fxml"));
         
         Scene scene = new Scene(root);
         
         //Icone da janela
-        stage.getIcons().add(new Image("/ui/imagens/icone.png"));
-        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
+                
         //Abrir maximizado
         stage.setMaximized(true);
         
