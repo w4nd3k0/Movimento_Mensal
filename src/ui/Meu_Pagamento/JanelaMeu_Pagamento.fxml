@@ -3,14 +3,16 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Meu_Pagamento.JanelaMeu_PagamentoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Meu_Pagamento.JanelaMeu_PagamentoController">
    <children>
       <JFXTextField fx:id="TFID" editable="false" labelFloat="true" layoutX="14.0" layoutY="14.0" promptText="ID" />
       <JFXTextField fx:id="TFValor" labelFloat="true" layoutX="408.0" layoutY="65.0" promptText="Valor" />
@@ -33,7 +35,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="TabelaMeuPagamento" layoutX="15.0" layoutY="207.0" prefHeight="179.0" prefWidth="570.0">
+      <TableView fx:id="TabelaMeuPagamento" layoutX="15.0" layoutY="265.0" prefHeight="321.0" prefWidth="570.0">
         <columns>
           <TableColumn fx:id="COID" prefWidth="44.0" text="ID" />
           <TableColumn fx:id="COVencimento" prefWidth="77.0" text="Vencimento" />
@@ -48,5 +50,12 @@
       <JFXDatePicker fx:id="DPVencimento" layoutX="14.0" layoutY="65.0" promptText="Data Vencimento" />
       <JFXDatePicker fx:id="DPPagamento" layoutX="207.0" layoutY="65.0" promptText="Data Pagamento" />
       <JFXTextField fx:id="TFDescricao" labelFloat="true" layoutX="208.0" layoutY="14.0" prefHeight="25.0" prefWidth="378.0" promptText="Descrição" />
+      <JFXRadioButton fx:id="RTodos" layoutX="29.0" layoutY="216.0" text="Todos">
+         <toggleGroup>
+            <ToggleGroup fx:id="Situacao" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="RAPagar" layoutX="279.0" layoutY="218.0" text="A pagar" toggleGroup="$Situacao" />
+      <JFXRadioButton fx:id="RPagos" layoutX="149.0" layoutY="218.0" onAction="#FiltrarPagos" text="Pagos" toggleGroup="$Situacao" />
    </children>
 </AnchorPane>

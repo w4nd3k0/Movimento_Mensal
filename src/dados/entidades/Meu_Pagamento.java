@@ -62,11 +62,15 @@ public class Meu_Pagamento {
     }
     
     public String getPagamento_MeuPagamentoFormatado(){
+        
+        if(getPagamento_MeuPagamento()!= null){
         DateTimeFormatter formatador = DateTimeFormatter
                 .ofLocalizedDate(FormatStyle.MEDIUM);
         
         String formatado = Pagamento_MeuPagamento.format(formatador);
         return formatado;
+        }
+        return null;
     }
     
     //Construtor vazio da JPA (Obrigatório)

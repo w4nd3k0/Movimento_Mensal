@@ -67,5 +67,13 @@ public class Meu_PagamentoServico {
         
         //Mandar para a DAO excluir
         dao.excluir(m);
-    }  
+    }
+    
+    public List<Meu_Pagamento> buscarPagamento(String Spag){
+        
+        //Qualquer regra de negócio (se aplicável)
+        
+        //Mandar para a DAO buscar os filmes pelo nome
+        return dao.buscarPagamento(Spag);
+    }
 }

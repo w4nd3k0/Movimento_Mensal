@@ -7,6 +7,7 @@ package ui.Meu_Pagamento;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import dados.entidades.Contato;
 import dados.entidades.Forma_Pagamento;
@@ -26,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import servicos.ContatoServico;
 import servicos.Forma_PagamentoServico;
@@ -89,12 +91,22 @@ public class JanelaMeu_PagamentoController implements Initializable {
     //Atributo para representar o Movimento_Conta selecionado
     //na tabela para editar e excluir
     private Meu_Pagamento Selecionado;
+    @FXML
+    private ToggleGroup Situacao;
+    @FXML
+    private JFXRadioButton RTodos;
+    @FXML
+    private JFXRadioButton RAPagar;
+    @FXML
+    private JFXRadioButton RPagos;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        RTodos.isSelected();
         
         //Configure a tabela
         ConfigurarTabelaMeu_Pagamento();
@@ -223,6 +235,17 @@ public class JanelaMeu_PagamentoController implements Initializable {
             if(btn.get() == ButtonType.OK){
                 
                 //Pegar os novos dados do formulário e atualizar o Meu_Pagamento
+                
+                    
+                Selecionado.setDesc_MeuPagamento(TFDescricao.getText());
+                Selecionado.setVencimento_MeuPagamento(DPVencimento.getValue());
+                //Selecionado.setPagamento_MeuPagamento(DPPagamento.getValue());
+                Selecionado.setValor_MeuPagamento(new BigDecimal(TFValor.getText()));
+                Selecionado.setContato_MeuPagamento(CBContato.getValue());
+                Selecionado.setLancamento_MeuPagamento(CBLancamento.getValue());
+                Selecionado.setForma_MeuPagamento(CBForma.getValue());
+                    
+                
                 Selecionado.setDesc_MeuPagamento(TFDescricao.getText());
                 Selecionado.setVencimento_MeuPagamento(DPVencimento.getValue());
                 Selecionado.setPagamento_MeuPagamento(DPPagamento.getValue());
@@ -306,5 +329,30 @@ public class JanelaMeu_PagamentoController implements Initializable {
         }else{
             AlertaUtil.mensagemErro("Selecione um lançamento.");
         }
-    } 
+    }
+
+    @FXML
+    private void FiltrarPagos(ActionEvent event) {
+        
+        if(RPagos.isSelected()){
+            
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String Spag = null;
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Meu_Pagamento> Meu_Pagamento = ServicoMeu_Pagamento.buscarPagamento(Spag);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Meu_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaMeuPagamento.setItems(Dados);
+            
+        }
+        
+    }
 }

@@ -95,4 +95,22 @@ public class Meu_PagamentoDAO {
         //Commit na transação
         gerenciador.getTransaction().commit();
     }
+    
+        public List<Meu_Pagamento> buscarPagamento(String Spag) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Meu_Pagamento> consulta = gerenciador.createQuery(
+                "Select m from Meu_Pagamento m where m.Pagamento_MeuPagamento like :sit",
+                Meu_Pagamento.class);
+
+        //Substituindo o parametro :sit pelo valor da variavel n
+        consulta.setParameter("sit", Spag);
+
+        //Retornar os dados
+        return consulta.getResultList();
+
+    }
 }
