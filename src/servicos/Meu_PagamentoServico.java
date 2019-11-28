@@ -7,6 +7,7 @@ package servicos;
 
 import dados.daos.Meu_PagamentoDAO;
 import dados.entidades.Meu_Pagamento;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -69,11 +70,19 @@ public class Meu_PagamentoServico {
         dao.excluir(m);
     }
     
-    public List<Meu_Pagamento> buscarPagamento(String Spag){
+    public List<Meu_Pagamento> FiltrarAPagar(){
         
         //Qualquer regra de negócio (se aplicável)
         
         //Mandar para a DAO buscar os filmes pelo nome
-        return dao.buscarPagamento(Spag);
+        return dao.FiltrarAPagar();
+    }
+    
+    public List<Meu_Pagamento> FiltrarPagos(){
+        
+        //Qualquer regra de negócio (se aplicável)
+        
+        //Mandar para a DAO buscar os filmes pelo nome
+        return dao.FiltrarPagos();
     }
 }

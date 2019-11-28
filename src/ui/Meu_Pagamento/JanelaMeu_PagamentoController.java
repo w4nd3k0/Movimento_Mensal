@@ -76,6 +76,15 @@ public class JanelaMeu_PagamentoController implements Initializable {
     private TableColumn COForma;
     @FXML
     private TableColumn CODescricao;
+    
+    @FXML
+    private ToggleGroup Situacao;
+    @FXML
+    private JFXRadioButton RTodos;
+    @FXML
+    private JFXRadioButton RAPagar;
+    @FXML
+    private JFXRadioButton RPagos;
             
     //Atributo que representa os dados para tabela
     private ObservableList<Meu_Pagamento> Dados
@@ -91,14 +100,6 @@ public class JanelaMeu_PagamentoController implements Initializable {
     //Atributo para representar o Movimento_Conta selecionado
     //na tabela para editar e excluir
     private Meu_Pagamento Selecionado;
-    @FXML
-    private ToggleGroup Situacao;
-    @FXML
-    private JFXRadioButton RTodos;
-    @FXML
-    private JFXRadioButton RAPagar;
-    @FXML
-    private JFXRadioButton RPagos;
 
     /**
      * Initializes the controller class.
@@ -106,7 +107,6 @@ public class JanelaMeu_PagamentoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        RTodos.isSelected();
         
         //Configure a tabela
         ConfigurarTabelaMeu_Pagamento();
@@ -332,18 +332,15 @@ public class JanelaMeu_PagamentoController implements Initializable {
     }
 
     @FXML
-    private void FiltrarPagos(ActionEvent event) {
+    private void FiltarSituacao(ActionEvent event) {
         
-        if(RPagos.isSelected()){
+        if(RAPagar.isSelected()){
             
         //Limpando quaisquer dados anteriores
         Dados.clear();
-
-        //Pegando o nome que a pessoa deseja pesquisar
-        String Spag = null;
         
         //Solicitando a camada de servico a lista de atores
-        List<Meu_Pagamento> Meu_Pagamento = ServicoMeu_Pagamento.buscarPagamento(Spag);
+        List<Meu_Pagamento> Meu_Pagamento = ServicoMeu_Pagamento.FiltrarAPagar();
 
         //Transformar a lista de atores no formato que a tabela
         //do JavaFX aceita
@@ -354,5 +351,30 @@ public class JanelaMeu_PagamentoController implements Initializable {
             
         }
         
+        if(RPagos.isSelected()){
+            
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Meu_Pagamento> Meu_Pagamento = ServicoMeu_Pagamento.FiltrarPagos();
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Meu_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaMeuPagamento.setItems(Dados);
+            
+        }
+        
+        if(RTodos.isSelected()){
+            
+            //Limpando quaisquer dados anteriores
+            Dados.clear();
+            
+            //Atualizar a tabela
+            ListarMeu_PagamentoTabela();   
+        }
     }
 }

@@ -44,7 +44,7 @@ public class PrincipalController implements Initializable {
         //Ler o FXML que representa a nova janela
         //(adicionar o throws)
         Parent root = FXMLLoader.load(getClass()
-                .getResource("/ui/Conta/JanelaConta.fxml"));
+                .getResource("/ui/conta/JanelaConta.fxml"));
         //Criando a cena
         Scene scene = new Scene(root);
         //Criando a janela (STAGE) 

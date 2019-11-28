@@ -6,6 +6,7 @@
 package dados.daos;
 
 import dados.entidades.Meu_Pagamento;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -96,21 +97,39 @@ public class Meu_PagamentoDAO {
         gerenciador.getTransaction().commit();
     }
     
-        public List<Meu_Pagamento> buscarPagamento(String Spag) {
+    public List<Meu_Pagamento> FiltrarAPagar() {
 
         //Pegando o gerenciador de acesso ao BD
         EntityManager gerenciador = JPAUtil.getGerenciador();
 
         //Criando a consulta ao BD
         TypedQuery<Meu_Pagamento> consulta = gerenciador.createQuery(
-                "Select m from Meu_Pagamento m where m.Pagamento_MeuPagamento like :sit",
+                "Select m from Meu_Pagamento m where m.Pagamento_MeuPagamento is null",
                 Meu_Pagamento.class);
 
         //Substituindo o parametro :sit pelo valor da variavel n
-        consulta.setParameter("sit", Spag);
+        //consulta.setParameter("sit", Spag);
 
         //Retornar os dados
         return consulta.getResultList();
 
     }
+    
+    public List<Meu_Pagamento> FiltrarPagos() {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Meu_Pagamento> consulta = gerenciador.createQuery(
+                "Select m from Meu_Pagamento m where m.Pagamento_MeuPagamento is not null",
+                Meu_Pagamento.class);
+
+        //Substituindo o parametro :sit pelo valor da variavel n
+        //consulta.setParameter("sit", Spag);
+
+        //Retornar os dados
+        return consulta.getResultList();
+
+    }    
 }
