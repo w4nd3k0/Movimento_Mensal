@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -54,6 +55,10 @@ public class PrincipalController implements Initializable {
         //Adicionando a cena na janela
         stage.setScene(scene);
         
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
+        
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores
         //quando essa for mostrada
@@ -80,6 +85,11 @@ public class PrincipalController implements Initializable {
         stage.setTitle("Lançamento Conta");
         //Adicionando a cena na janela
         stage.setScene(scene);
+        
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
+        
         
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores
@@ -108,6 +118,10 @@ public class PrincipalController implements Initializable {
         //Adicionando a cena na janela
         stage.setScene(scene);
         
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
+        
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores
         //quando essa for mostrada
@@ -134,6 +148,11 @@ public class PrincipalController implements Initializable {
         stage.setTitle("Contatos");
         //Adicionando a cena na janela
         stage.setScene(scene);
+        
+        
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
         
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores
@@ -162,6 +181,10 @@ public class PrincipalController implements Initializable {
         //Adicionando a cena na janela
         stage.setScene(scene);
         
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
+        
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores
         //quando essa for mostrada
@@ -188,6 +211,10 @@ public class PrincipalController implements Initializable {
         stage.setTitle("Formas de Pagamentos");
         //Adicionando a cena na janela
         stage.setScene(scene);
+        
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
         
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores
@@ -216,6 +243,11 @@ public class PrincipalController implements Initializable {
         //Adicionando a cena na janela
         stage.setScene(scene);
         
+        
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
+        
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores
         //quando essa for mostrada
@@ -243,6 +275,10 @@ public class PrincipalController implements Initializable {
         //Adicionando a cena na janela
         stage.setScene(scene);
         
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
+        
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores
         //quando essa for mostrada
@@ -269,6 +305,10 @@ public class PrincipalController implements Initializable {
         stage.setTitle("Outros Pagamentos");
         //Adicionando a cena na janela
         stage.setScene(scene);
+        
+        stage.setResizable(false);
+        
+        stage.getIcons().add(new Image("/ui/imagens/cw transparente.png"));
         
         //Configurando o MODALITY
         //Diz respeito ao comportamento das janelas anteriores

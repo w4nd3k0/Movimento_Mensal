@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ui.Contato.JanelaContatoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" stylesheets="@../main/Main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Contato.JanelaContatoController">
    <children>
-      <JFXTextField fx:id="TFID" labelFloat="true" layoutX="14.0" layoutY="27.0" promptText="ID" />
+      <JFXTextField fx:id="TFID" editable="false" labelFloat="true" layoutX="14.0" layoutY="27.0" promptText="ID" />
       <JFXTextField fx:id="TFNome" labelFloat="true" layoutX="187.0" layoutY="27.0" prefHeight="25.0" prefWidth="294.0" promptText="Nome" />
       <JFXTextField fx:id="TFTelefone" labelFloat="true" layoutX="14.0" layoutY="78.0" promptText="Telefone" />
-      <JFXTextField fx:id="TFBanco" labelFloat="true" layoutX="187.0" layoutY="78.0" prefHeight="25.0" prefWidth="106.0" promptText="Banco" />
-      <JFXTextField fx:id="TFAgencia" labelFloat="true" layoutX="326.0" layoutY="78.0" prefHeight="25.0" prefWidth="106.0" promptText="Agência" />
-      <JFXTextField fx:id="TFConta" labelFloat="true" layoutX="464.0" layoutY="78.0" prefHeight="25.0" prefWidth="106.0" promptText="Conta" />
+      <JFXTextField fx:id="TFBanco" labelFloat="true" layoutX="217.0" layoutY="78.0" prefHeight="25.0" prefWidth="152.0" promptText="Banco" />
+      <JFXTextField fx:id="TFAgencia" labelFloat="true" layoutX="427.0" layoutY="78.0" prefHeight="25.0" prefWidth="135.0" promptText="Agência" />
+      <JFXTextField fx:id="TFConta" labelFloat="true" layoutX="616.0" layoutY="78.0" prefHeight="25.0" prefWidth="117.0" promptText="Conta" />
       <JFXButton layoutX="56.0" layoutY="128.0" onAction="#Salvar" text="Salvar">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -32,7 +31,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="TabelaContato" layoutX="14.0" layoutY="186.0" prefHeight="200.0" prefWidth="575.0">
+      <TableView fx:id="TabelaContato" layoutX="15.0" layoutY="306.0" prefHeight="280.0" prefWidth="720.0">
         <columns>
           <TableColumn fx:id="COID" prefWidth="56.0" text="ID" />
           <TableColumn fx:id="CONome" prefWidth="187.0" text="Nome" />
@@ -42,6 +41,6 @@
             <TableColumn fx:id="COConta" prefWidth="92.0" text="Conta" />
         </columns>
       </TableView>
-      <Separator layoutX="13.0" layoutY="168.0" prefWidth="575.0" />
+      <Separator layoutX="13.0" layoutY="168.0" prefHeight="0.0" prefWidth="720.0" />
    </children>
 </AnchorPane>

@@ -10,15 +10,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ui.Outro_Pagamento.JanelaOutro_PagamentoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" stylesheets="@../main/Main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Outro_Pagamento.JanelaOutro_PagamentoController">
    <children>
       <JFXTextField fx:id="TFID" editable="false" labelFloat="true" layoutX="14.0" layoutY="14.0" promptText="ID" />
       <JFXDatePicker fx:id="DPPagamento" layoutX="14.0" layoutY="60.0" promptText="Data de Pagamento" />
       <JFXTextField fx:id="TFValor" labelFloat="true" layoutX="233.0" layoutY="60.0" promptText="Valor" />
-      <JFXTextField fx:id="TFDescricao" labelFloat="true" layoutX="428.0" layoutY="60.0" promptText="Descricao" />
-      <JFXComboBox fx:id="CBContato" labelFloat="true" layoutX="14.0" layoutY="113.0" prefHeight="25.0" prefWidth="135.0" promptText="Contato" />
-      <JFXComboBox fx:id="CBForma" labelFloat="true" layoutX="233.0" layoutY="113.0" prefHeight="25.0" prefWidth="135.0" promptText="Forma Pagamento" />
+      <JFXTextField fx:id="TFDescricao" labelFloat="true" layoutX="442.0" layoutY="60.0" prefHeight="25.0" prefWidth="293.0" promptText="Descricao" />
+      <JFXComboBox fx:id="CBContato" labelFloat="true" layoutX="14.0" layoutY="113.0" prefHeight="25.0" prefWidth="355.0" promptText="Contato" />
+      <JFXComboBox fx:id="CBForma" labelFloat="true" layoutX="443.0" layoutY="113.0" prefHeight="25.0" prefWidth="293.0" promptText="Forma Pagamento" />
       <JFXButton layoutX="56.0" layoutY="152.0" onAction="#Salvar" text="Salvar">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -34,15 +33,15 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <Separator layoutX="26.0" layoutY="185.0" prefHeight="8.0" prefWidth="550.0" />
-      <TableView fx:id="TabelaOutroPagamento" layoutX="16.0" layoutY="204.0" prefHeight="179.0" prefWidth="570.0">
+      <Separator layoutX="15.0" layoutY="186.0" prefHeight="0.0" prefWidth="720.0" />
+      <TableView fx:id="TabelaOutroPagamento" layoutX="15.0" layoutY="306.0" prefHeight="280.0" prefWidth="720.0">
         <columns>
-          <TableColumn fx:id="COID" text="ID" />
-          <TableColumn fx:id="COPagamento" prefWidth="97.0" text="Pagamento" />
+          <TableColumn fx:id="COID" prefWidth="56.0" text="ID" />
+          <TableColumn fx:id="COPagamento" prefWidth="104.0" text="Pagamento" />
             <TableColumn fx:id="COValor" prefWidth="97.0" text="Valor" />
-            <TableColumn fx:id="CODescricao" prefWidth="97.0" text="Descrição" />
-            <TableColumn fx:id="COContato" prefWidth="97.0" text="Contato" />
-            <TableColumn fx:id="COForma" prefWidth="101.0" text="Forma" />
+            <TableColumn fx:id="CODescricao" prefWidth="214.0" text="Descrição" />
+            <TableColumn fx:id="COContato" prefWidth="139.0" text="Contato" />
+            <TableColumn fx:id="COForma" prefWidth="105.0" text="Forma" />
         </columns>
       </TableView>
    </children>

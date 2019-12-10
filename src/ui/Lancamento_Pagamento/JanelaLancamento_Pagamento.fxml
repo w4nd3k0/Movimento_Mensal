@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Lancamento_Pagamento.JanelaLancamento_PagamentoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" stylesheets="@../main/Main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Lancamento_Pagamento.JanelaLancamento_PagamentoController">
    <children>
-      <JFXTextField fx:id="TFID" labelFloat="true" layoutX="14.0" layoutY="14.0" promptText="ID" />
+      <JFXTextField fx:id="TFID" editable="false" labelFloat="true" layoutX="14.0" layoutY="14.0" promptText="ID" />
       <JFXTextField fx:id="TFDescricao" labelFloat="true" layoutX="14.0" layoutY="62.0" prefHeight="25.0" prefWidth="466.0" promptText="Descrição" />
       <JFXButton layoutX="56.0" layoutY="115.0" onAction="#Salvar" text="Salvar">
          <font>
@@ -27,11 +27,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <Separator layoutX="14.0" layoutY="158.0" prefWidth="570.0" />
-      <TableView fx:id="TabelaLancamento_Pagamento" layoutX="14.0" layoutY="186.0" prefHeight="200.0" prefWidth="570.0">
+      <Separator layoutX="14.0" layoutY="158.0" prefHeight="0.0" prefWidth="720.0" />
+      <TableView fx:id="TabelaLancamento_Pagamento" layoutX="15.0" layoutY="306.0" prefHeight="280.0" prefWidth="720.0">
         <columns>
           <TableColumn fx:id="COID" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="CODescricao" prefWidth="493.0" text="Descrição" />
+          <TableColumn fx:id="CODescricao" prefWidth="640.0" text="Descrição" />
         </columns>
       </TableView>
    </children>
