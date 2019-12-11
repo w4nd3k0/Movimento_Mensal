@@ -6,6 +6,7 @@
 package dados.daos;
 
 import dados.entidades.Outro_Pagamento;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -96,6 +97,40 @@ public class Outro_PagamentoDAO {
         
         //Commit na transação
         gerenciador.getTransaction().commit();  
+    }
+    
+    public List<Outro_Pagamento> Pesquisar(String nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Outro_Pagamento> consulta = gerenciador.createQuery(
+                "Select f from Outro_Pagamento f where f.Descricao_OutroPagamento like :nome",
+                Outro_Pagamento.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome + "%");
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
+    
+    public List<Outro_Pagamento> PesquisarData(LocalDate nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Outro_Pagamento> consulta = gerenciador.createQuery(
+                "Select f from Outro_Pagamento f where f.Pagamento_OutroPagamento = :nome",
+                Outro_Pagamento.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome);
+
+        //Retornar os dados
+        return consulta.getResultList();
     }
     
 }

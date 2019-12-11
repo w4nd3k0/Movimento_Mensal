@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -38,13 +39,13 @@
       <JFXDatePicker fx:id="DPVencimento" layoutX="14.0" layoutY="65.0" promptText="Data Vencimento" />
       <JFXDatePicker fx:id="DPPagamento" layoutX="217.0" layoutY="65.0" promptText="Data Pagamento" />
       <JFXTextField fx:id="TFDescricao" labelFloat="true" layoutX="217.0" layoutY="14.0" prefHeight="25.0" prefWidth="517.0" promptText="Descrição" />
-      <JFXRadioButton fx:id="RTodos" layoutX="29.0" layoutY="205.0" onAction="#FiltarSituacao" selected="true" text="Todos">
+      <JFXRadioButton fx:id="RTodos" layoutX="15.0" layoutY="205.0" onAction="#FiltarSituacao" selected="true" text="Todos">
          <toggleGroup>
             <ToggleGroup fx:id="Situacao" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="RAPagar" layoutX="191.0" layoutY="205.0" onAction="#FiltarSituacao" text="A pagar" toggleGroup="$Situacao" />
-      <JFXRadioButton fx:id="RPagos" layoutX="108.0" layoutY="205.0" onAction="#FiltarSituacao" text="Pagos" toggleGroup="$Situacao" />
+      <JFXRadioButton fx:id="RAPagar" layoutX="177.0" layoutY="205.0" onAction="#FiltarSituacao" text="A pagar" toggleGroup="$Situacao" />
+      <JFXRadioButton fx:id="RPagos" layoutX="94.0" layoutY="205.0" onAction="#FiltarSituacao" text="Pagos" toggleGroup="$Situacao" />
       <GridPane alignment="CENTER" layoutX="13.0" layoutY="155.0" prefHeight="30.0" prefWidth="670.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -72,5 +73,9 @@
             </JFXButton>
          </children>
       </GridPane>
+      <Label layoutX="15.0" layoutY="233.0" text="Pesquisar" />
+      <JFXTextField fx:id="TFDescricaoPesquisa" labelFloat="true" layoutX="15.0" layoutY="263.0" onAction="#PesquisarNome" prefHeight="25.0" prefWidth="298.0" promptText="Descrição" />
+      <JFXDatePicker fx:id="DPPagamentoPesquisa" layoutX="562.0" layoutY="263.0" onAction="#PesquisarData" promptText="Data Pagamento" />
+      <JFXDatePicker fx:id="DPVencimentoPesquisa" layoutX="352.0" layoutY="263.0" onAction="#PesquisarDataVencimento" promptText="Data Vencimento" />
    </children>
 </AnchorPane>

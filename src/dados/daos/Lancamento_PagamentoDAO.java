@@ -95,4 +95,22 @@ public class Lancamento_PagamentoDAO {
         //Commit na transação
         gerenciador.getTransaction().commit();   
     }
+    
+    public List<Lancamento_Pagamento> Pesquisar(String nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Lancamento_Pagamento> consulta = gerenciador.createQuery(
+                "Select f from Lancamento_Pagamento f where f.Descricao_LancamentoPagamento like :nome",
+                Lancamento_Pagamento.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome + "%");
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
+    
 }

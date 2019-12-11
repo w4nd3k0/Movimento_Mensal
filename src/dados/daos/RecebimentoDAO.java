@@ -97,4 +97,21 @@ public class RecebimentoDAO {
         //Commit na transação
         gerenciador.getTransaction().commit();   
     }
+    
+    public List<Recebimento> Pesquisar(String nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Recebimento> consulta = gerenciador.createQuery(
+                "Select f from Recebimento f where f.Descricao_Recebimento like :nome",
+                Recebimento.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome + "%");
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
 }

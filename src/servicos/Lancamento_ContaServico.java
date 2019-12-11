@@ -64,4 +64,9 @@ public class Lancamento_ContaServico {
         dao.excluir(a);
     }
     
+    public List<Lancamento_Conta> Pesquisar(String nome) {
+        
+        return dao.Pesquisar(nome);
+    }
+    
 }

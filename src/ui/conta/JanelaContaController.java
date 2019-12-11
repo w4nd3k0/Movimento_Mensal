@@ -5,9 +5,11 @@
  */
 package ui.conta;
 
+import excecoes.ValorInvalidoException;
 import com.jfoenix.controls.JFXTextField;
 import dados.entidades.Conta;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -132,18 +134,16 @@ public class JanelaContaController implements Initializable {
     private void Salvar(ActionEvent event) {
         
         //Verificar se está atualizando ou inserindo
-        if(TFIDConta.getText().isEmpty()){ //inserindo
-            //Pega os dados do fomulário e cria um objeto Conta
+        if(TFIDConta.getText().isEmpty()){ //Pega os dados do fomulário e cria um objeto Conta
             Conta a = new Conta(TFNomeConta.getText(), TFBancoConta.getText(), TFAgenciaConta.getText(), TFNumeroConta.getText());
-
             //Mandar a Conta para a camada de servico
             Servico.salvar(a);
-            
             //Exibindo mensagem
             AlertaUtil.mensagemSucesso("Conta salva com sucesso!");
-            
             //Chama o metodo para atualizar a tabela
             ListarContaTabela();
+                        
+            
             
         }else{ //atualizando a Conta
            
@@ -154,21 +154,20 @@ public class JanelaContaController implements Initializable {
             
             //Se o botão OK foi pressionado
             if(btn.get() == ButtonType.OK){
+                
                 //Pegar os novos dados do formulário e atualizar a Conta
                 Selecionado.setNome_Conta(TFNomeConta.getText());
                 Selecionado.setBanco_Conta(TFBancoConta.getText());
                 Selecionado.setAgencia_Conta(TFAgenciaConta.getText());
                 Selecionado.setNumero_Conta(TFNumeroConta.getText());
-                
                 //Mandando pra camada de serviço salvar as alterações
                 Servico.editar(Selecionado);
-                
                 //Exibindo mensagem
-                AlertaUtil.mensagemSucesso("Conta atualizada com sucesso!"); 
-                
+                AlertaUtil.mensagemSucesso("Conta atualizada com sucesso!");
                 //Chama o metodo para atualizar a tabela
-                 ListarContaTabela();
+                ListarContaTabela();
             }
+            
         }
 
         //Limpando os campos do form

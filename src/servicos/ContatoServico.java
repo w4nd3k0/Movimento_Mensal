@@ -63,4 +63,9 @@ public class ContatoServico {
         //Mandar para a DAO excluir
         dao.excluir(c);
     } 
+    
+    public List<Contato> Pesquisar(String nome) {
+        
+        return dao.Pesquisar(nome);
+    }
 }

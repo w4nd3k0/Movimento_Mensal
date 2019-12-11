@@ -61,4 +61,9 @@ public class Lancamento_PagamentoServico {
         //Mandar para a DAO excluir
         dao.excluir(l);
     }
+    
+    public List<Lancamento_Pagamento> Pesquisar(String nome) {
+        
+        return dao.Pesquisar(nome);
+    }
 }

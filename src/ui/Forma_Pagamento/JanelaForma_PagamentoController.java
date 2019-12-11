@@ -51,6 +51,8 @@ public class JanelaForma_PagamentoController implements Initializable {
 
     //Atributo que vai armazenar qual a Forma_Pagamento foi selecionado na tabela
     private Forma_Pagamento Selecionado;
+    @FXML
+    private JFXTextField TFDescricaoPesquisar;
 
     /**
      * Initializes the controller class.
@@ -209,5 +211,25 @@ public class JanelaForma_PagamentoController implements Initializable {
         }else{
             AlertaUtil.mensagemErro("Selecione uma forma de pagamento.");
         }
+    }
+
+    @FXML
+    private void PesquisarNome(ActionEvent event) {
+        
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String nome = TFDescricaoPesquisar.getText();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Forma_Pagamento> Forma_Pagamento = Servico.Pesquisar(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Forma_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaForma_Pagamento.setItems(Dados);
     }
 }

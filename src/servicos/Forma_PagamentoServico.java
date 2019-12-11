@@ -62,4 +62,9 @@ public class Forma_PagamentoServico {
         //Mandar para a DAO excluir
         dao.excluir(f);
     }
+    
+    public List<Forma_Pagamento> Pesquisar(String nome) {
+        
+        return dao.Pesquisar(nome);
+    }
 }

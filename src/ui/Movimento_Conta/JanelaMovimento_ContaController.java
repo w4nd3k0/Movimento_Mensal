@@ -13,6 +13,7 @@ import dados.entidades.Lancamento_Conta;
 import dados.entidades.Movimento_Conta;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -88,6 +89,10 @@ public class JanelaMovimento_ContaController implements Initializable {
     //Atributo para representar o Movimento_Conta selecionado
     //na tabela para editar e excluir
     private Movimento_Conta Selecionado;
+    @FXML
+    private JFXTextField TFDescricaoPesquisa;
+    @FXML
+    private JFXDatePicker DPDataPesquisa;
 
     /**
      * Initializes the controller class.
@@ -288,6 +293,47 @@ public class JanelaMovimento_ContaController implements Initializable {
         }else{
             AlertaUtil.mensagemErro("Selecione um lançamento.");
         }
+    }
+
+    @FXML
+    private void PesquisarNome(ActionEvent event) {
+        
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String nome = TFDescricaoPesquisa.getText();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Movimento_Conta> Movimento_Conta = ServicoMovimento_Conta.Pesquisar(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Movimento_Conta);
+
+        //Jogando os dados na tabela
+        TabelaMovimento_Conta.setItems(Dados);
+        
+    }
+
+    @FXML
+    private void PesquisarData(ActionEvent event) {
+        
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        LocalDate nome = DPDataPesquisa.getValue();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Movimento_Conta> Movimento_Conta = ServicoMovimento_Conta.PesquisarData(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Movimento_Conta);
+
+        //Jogando os dados na tabela
+        TabelaMovimento_Conta.setItems(Dados);
     }
 }
 

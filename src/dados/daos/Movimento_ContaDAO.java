@@ -6,6 +6,7 @@
 package dados.daos;
 
 import dados.entidades.Movimento_Conta;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -94,5 +95,39 @@ public class Movimento_ContaDAO {
         
         //Commit na transação
         gerenciador.getTransaction().commit();
+    }
+    
+    public List<Movimento_Conta> Pesquisar(String nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Movimento_Conta> consulta = gerenciador.createQuery(
+                "Select f from Movimento_Conta f where f.Descricao_MovimentoConta like :nome",
+                Movimento_Conta.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome + "%");
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
+    
+    public List<Movimento_Conta> PesquisarData(LocalDate nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Movimento_Conta> consulta = gerenciador.createQuery(
+                "Select f from Movimento_Conta f where f.Data_MovimentoConta like :nome",
+                Movimento_Conta.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome);
+
+        //Retornar os dados
+        return consulta.getResultList();
     }
 }

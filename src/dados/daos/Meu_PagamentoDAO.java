@@ -131,5 +131,56 @@ public class Meu_PagamentoDAO {
         //Retornar os dados
         return consulta.getResultList();
 
-    }    
+    } 
+    
+    public List<Meu_Pagamento> Pesquisar(String nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Meu_Pagamento> consulta = gerenciador.createQuery(
+                "Select f from Meu_Pagamento f where f.Desc_MeuPagamento like :nome",
+                Meu_Pagamento.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome + "%");
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
+    
+    public List<Meu_Pagamento> PesquisarData(LocalDate nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Meu_Pagamento> consulta = gerenciador.createQuery(
+                "Select f from Meu_Pagamento f where f.Pagamento_MeuPagamento = :nome",
+                Meu_Pagamento.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome);
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
+    
+    public List<Meu_Pagamento> PesquisarDataVencimento(LocalDate nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Meu_Pagamento> consulta = gerenciador.createQuery(
+                "Select f from Meu_Pagamento f where f.Vencimento_MeuPagamento = :nome",
+                Meu_Pagamento.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome);
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
 }

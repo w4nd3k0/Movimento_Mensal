@@ -7,6 +7,7 @@ package servicos;
 
 import dados.daos.Outro_PagamentoDAO;
 import dados.entidades.Outro_Pagamento;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -60,6 +61,18 @@ public class Outro_PagamentoServico {
         
         //Mandar para a DAO excluir
         dao.excluir(a);
+    }
+    
+    public List<Outro_Pagamento> Pesquisar(String nome) {
+
+        //Retornar os dados
+        return dao.Pesquisar(nome);
+    }
+    
+    public List<Outro_Pagamento> PesquisarData(LocalDate nome) {
+
+        //Retornar os dados
+        return dao.PesquisarData(nome);
     }
     
 }

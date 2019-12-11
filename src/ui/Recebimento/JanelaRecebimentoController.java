@@ -69,6 +69,8 @@ public class JanelaRecebimentoController implements Initializable {
     //Atributo para representar o Recebimento selecionado
     //na tabela para editar e excluir
     private Recebimento Selecionado;    
+    @FXML
+    private JFXTextField TFDescricaoPesquisar;
 
     /**
      * Initializes the controller class.
@@ -252,4 +254,24 @@ public class JanelaRecebimentoController implements Initializable {
         }
         
     }   
+
+    @FXML
+    private void PesquisarNome(ActionEvent event) {
+        
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String nome = TFDescricaoPesquisar.getText();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Recebimento> Recebimento = ServicoRecebimento.Pesquisar(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Recebimento);
+
+        //Jogando os dados na tabela
+        TabelaRecebimento.setItems(Dados);
+    }
 }

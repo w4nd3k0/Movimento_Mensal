@@ -96,4 +96,21 @@ public class Lancamento_ContaDAO {
         //Commit na transação
         gerenciador.getTransaction().commit();     
     } 
+    
+    public List<Lancamento_Conta> Pesquisar(String nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Lancamento_Conta> consulta = gerenciador.createQuery(
+                "Select f from Lancamento_Conta f where f.Descricao_LancamentoConta like :nome",
+                Lancamento_Conta.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome + "%");
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
 }

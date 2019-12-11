@@ -7,6 +7,7 @@ package servicos;
 
 import dados.daos.Movimento_ContaDAO;
 import dados.entidades.Movimento_Conta;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -66,6 +67,17 @@ public class Movimento_ContaServico {
         
         //Mandar para a DAO excluir
         dao.excluir(f);
+    }
+    
+    public List<Movimento_Conta> Pesquisar(String nome) {
+        
+        return dao.Pesquisar(nome);
+    }
+    
+    public List<Movimento_Conta> PesquisarData(LocalDate nome) {
+        
+        return dao.PesquisarData(nome);
+    
     }
     
 }

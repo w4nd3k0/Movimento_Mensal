@@ -64,4 +64,9 @@ public class RecebimentoServico {
         dao.excluir(r);
     }
     
+    public List<Recebimento> Pesquisar(String nome) {
+        
+        return dao.Pesquisar(nome);
+    }
+    
 }

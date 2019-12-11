@@ -50,6 +50,8 @@ public class JanelaLancamento_PagamentoController implements Initializable {
 
     //Atributo que vai armazenar qual a Lancamento_Pagamento foi selecionado na tabela
     private Lancamento_Pagamento Selecionado;
+    @FXML
+    private JFXTextField TFDescricaoPesquisar;
 
     /**
      * Initializes the controller class.
@@ -208,6 +210,27 @@ public class JanelaLancamento_PagamentoController implements Initializable {
         }else{
             AlertaUtil.mensagemErro("Selecione uma lançamento de pagamento.");
         }
+    }
+
+    @FXML
+    private void PesquisarNome(ActionEvent event) {
+        
+                        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String nome = TFDescricaoPesquisar.getText();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Lancamento_Pagamento> Lancamento_Pagamento = Servico.Pesquisar(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Lancamento_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaLancamento_Pagamento.setItems(Dados);
+        
     }
     
 }

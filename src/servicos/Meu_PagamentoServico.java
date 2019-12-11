@@ -85,4 +85,20 @@ public class Meu_PagamentoServico {
         //Mandar para a DAO buscar os filmes pelo nome
         return dao.FiltrarPagos();
     }
+    
+    
+      public List<Meu_Pagamento> Pesquisar(String nome) {
+
+        return dao.Pesquisar(nome);
+    }
+    
+    public List<Meu_Pagamento> PesquisarData(LocalDate nome) {
+
+        return dao.PesquisarData(nome);
+    }
+    
+    public List<Meu_Pagamento> PesquisarDataVencimento(LocalDate nome) {
+
+        return dao.PesquisarDataVencimento(nome);
+    }
 }

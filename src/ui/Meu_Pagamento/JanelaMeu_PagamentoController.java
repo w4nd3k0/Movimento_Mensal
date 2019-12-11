@@ -100,6 +100,12 @@ public class JanelaMeu_PagamentoController implements Initializable {
     //Atributo para representar o Movimento_Conta selecionado
     //na tabela para editar e excluir
     private Meu_Pagamento Selecionado;
+    @FXML
+    private JFXTextField TFDescricaoPesquisa;
+    @FXML
+    private JFXDatePicker DPPagamentoPesquisa;
+    @FXML
+    private JFXDatePicker DPVencimentoPesquisa;
 
     /**
      * Initializes the controller class.
@@ -239,7 +245,7 @@ public class JanelaMeu_PagamentoController implements Initializable {
                     
                 Selecionado.setDesc_MeuPagamento(TFDescricao.getText());
                 Selecionado.setVencimento_MeuPagamento(DPVencimento.getValue());
-                //Selecionado.setPagamento_MeuPagamento(DPPagamento.getValue());
+                Selecionado.setPagamento_MeuPagamento(DPPagamento.getValue());
                 Selecionado.setValor_MeuPagamento(new BigDecimal(TFValor.getText()));
                 Selecionado.setContato_MeuPagamento(CBContato.getValue());
                 Selecionado.setLancamento_MeuPagamento(CBLancamento.getValue());
@@ -376,5 +382,66 @@ public class JanelaMeu_PagamentoController implements Initializable {
             //Atualizar a tabela
             ListarMeu_PagamentoTabela();   
         }
+    }
+
+    @FXML
+    private void PesquisarNome(ActionEvent event) {
+
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String nome = TFDescricaoPesquisa.getText();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Meu_Pagamento> Meu_Pagamento = ServicoMeu_Pagamento.Pesquisar(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Meu_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaMeuPagamento.setItems(Dados);
+    }
+
+    @FXML
+    private void PesquisarData(ActionEvent event) {
+        
+                //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        LocalDate nome = DPPagamentoPesquisa.getValue();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Meu_Pagamento> Meu_Pagamento = ServicoMeu_Pagamento.PesquisarData(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Meu_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaMeuPagamento.setItems(Dados);
+        
+    }
+
+    @FXML
+    private void PesquisarDataVencimento(ActionEvent event) {
+        
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        LocalDate nome = DPVencimentoPesquisa.getValue();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Meu_Pagamento> Meu_Pagamento = ServicoMeu_Pagamento.PesquisarData(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Meu_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaMeuPagamento.setItems(Dados);
     }
 }

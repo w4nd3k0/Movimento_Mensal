@@ -67,6 +67,8 @@ public class JanelaContatoController implements Initializable {
 
     //Atributo que vai armazenar qual o Contato foi selecionado na tabela
     private Contato Selecionado;
+    @FXML
+    private JFXTextField TFNomePesquisa;
     
     /**
      * Initializes the controller class.
@@ -240,4 +242,26 @@ public class JanelaContatoController implements Initializable {
             AlertaUtil.mensagemErro("Selecione uma conta.");
         }
     }   
+
+    @FXML
+    private void PesquisarNome(ActionEvent event) {
+        
+                //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String nome = TFNomePesquisa.getText();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Contato> filmes = Servico.Pesquisar(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(filmes);
+
+        //Jogando os dados na tabela
+        TabelaContato.setItems(Dados);
+        
+        
+    }
 }

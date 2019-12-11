@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -44,5 +45,8 @@
             <TableColumn fx:id="COForma" prefWidth="105.0" text="Forma" />
         </columns>
       </TableView>
+      <Label layoutX="15.0" layoutY="197.0" text="Pesquisar" />
+      <JFXTextField fx:id="TFDescricaoPesquisar" labelFloat="true" layoutX="15.0" layoutY="233.0" onAction="#PesquisarNome" prefHeight="25.0" prefWidth="293.0" promptText="Descricao" />
+      <JFXDatePicker fx:id="DPPagamentoPesquisar" layoutX="555.0" layoutY="233.0" onAction="#PesquisarData" promptText="Data de Pagamento" />
    </children>
 </AnchorPane>

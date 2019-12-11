@@ -50,6 +50,8 @@ public class JanelaLancamento_ContaController implements Initializable {
 
     //Atributo que vai armazenar qual o Lancamento_Conta foi selecionado na tabela
     private Lancamento_Conta Selecionado;
+    @FXML
+    private JFXTextField TFDescricaoPesquisa;
 
     /**
      * Initializes the controller class.
@@ -202,4 +204,25 @@ public class JanelaLancamento_ContaController implements Initializable {
             AlertaUtil.mensagemErro("Selecione um lançamento.");
         }
     }  
+
+    @FXML
+    private void PesquisarNome(ActionEvent event) {
+        
+                        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String nome = TFDescricaoPesquisa.getText();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Lancamento_Conta> Lancamento_Conta = Servico.Pesquisar(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Lancamento_Conta);
+
+        //Jogando os dados na tabela
+        TabelaLancamento_Conta.setItems(Dados);
+        
+    }
 }

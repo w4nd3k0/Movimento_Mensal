@@ -78,6 +78,10 @@ public class JanelaOutro_PagamentoController implements Initializable {
     //Atributo para representar o Outro_Pagamento selecionado
     //na tabela para editar e excluir
     private Outro_Pagamento Selecionado;
+    @FXML
+    private JFXTextField TFDescricaoPesquisar;
+    @FXML
+    private JFXDatePicker DPPagamentoPesquisar;
 
     /**
      * Initializes the controller class.
@@ -272,4 +276,44 @@ public class JanelaOutro_PagamentoController implements Initializable {
             AlertaUtil.mensagemErro("Selecione um lançamento.");
         }
     }   
+
+    @FXML
+    private void PesquisarNome(ActionEvent event) {
+        
+        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        String nome = TFDescricaoPesquisar.getText();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Outro_Pagamento> Outro_Pagamento = ServicoOutro_Pagamento.Pesquisar(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Outro_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaOutroPagamento.setItems(Dados);
+    }
+
+    @FXML
+    private void PesquisarData(ActionEvent event) {
+        
+                        //Limpando quaisquer dados anteriores
+        Dados.clear();
+
+        //Pegando o nome que a pessoa deseja pesquisar
+        LocalDate nome = DPPagamentoPesquisar.getValue();
+        
+        //Solicitando a camada de servico a lista de atores
+        List<Outro_Pagamento> Outro_Pagamento = ServicoOutro_Pagamento.PesquisarData(nome);
+
+        //Transformar a lista de atores no formato que a tabela
+        //do JavaFX aceita
+        Dados = FXCollections.observableArrayList(Outro_Pagamento);
+
+        //Jogando os dados na tabela
+        TabelaOutroPagamento.setItems(Dados);
+    }
 }

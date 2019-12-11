@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -34,5 +35,7 @@
           <TableColumn fx:id="CODescricao" prefWidth="639.0" text="Descrição" />
         </columns>
       </TableView>
+      <Label layoutX="24.0" layoutY="194.0" text="Pesquisar" />
+      <JFXTextField fx:id="TFDescricaoPesquisar" labelFloat="true" layoutX="24.0" layoutY="244.0" onAction="#PesquisarNome" prefHeight="25.0" prefWidth="471.0" promptText="Descrição" />
    </children>
 </AnchorPane>

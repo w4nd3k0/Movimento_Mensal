@@ -95,4 +95,22 @@ public class Forma_PagamentoDAO {
         //Commit na transação
         gerenciador.getTransaction().commit();   
     }
+    
+    public List<Forma_Pagamento> Pesquisar(String nome) {
+
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Criando a consulta ao BD
+        TypedQuery<Forma_Pagamento> consulta = gerenciador.createQuery(
+                "Select f from Forma_Pagamento f where f.Descricao_FormaPagamento like :nome",
+                Forma_Pagamento.class);
+
+        //Substituindo o parametro :nome pelo valor da variavel n
+        consulta.setParameter("nome", nome + "%");
+
+        //Retornar os dados
+        return consulta.getResultList();
+    }
+    
 }
